@@ -458,8 +458,10 @@ class Validator{
     return $return;
   }
   public function password($password, array $opt){
-    $regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,24}^";
-    $return = \preg_match_all($regex, $password) ? $password : false;
+    $regex = '/^.*(?=.{8,24})((?=.*[!@#$%^&*()\/\-_=+{}\]\[;:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/m';
+
+    \preg_match_all($regex, $password, $matches, PREG_SET_ORDER, 0);
+    $return = $matches ? $password : false;
     if( !$return ){
       $this->errors['password'][] = [0,256,"[{$opt[0]}]: Password is too weak. Choose a stronger password of minimum character length:8, maximum character length: 24, it should contain at least one lower and upper case letter, a numeric and a special character such as $@$!%*?&",__FILE__,__LINE__];
     }
