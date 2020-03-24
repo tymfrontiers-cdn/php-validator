@@ -29,7 +29,7 @@ class Validator{
     "date" => "Given date",
     "tym" => "Given time",
     "datetym" => "Date and time",
-    "ip" => "IP: Internet Protocol address",
+    "ip" => "IP: Internet Protocol",
     "int" => "Integer value",
     "float" => "Floating point/decimal value",
     "password" => "Strong password",
