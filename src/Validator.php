@@ -13,6 +13,29 @@ class Validator{
   #     string line // where error ocured. e.g __LINE__
   #   ]
   # ]
+  public $validate_type = [
+    "name" => "Human name",
+    "username" => "Unique ID or code",
+    "option" => "Set of options",
+    "email" => "Email address",
+    "text" => "Plain text",
+    "html" => "HTML text script",
+    "markdown" => "Markdown script (Plain text)",
+    "mixed" => "Mixed value",
+    "script" => "Variable script",
+    "tel" => "Telephone number",
+    "url" => "URL/URI link",
+    "boolean" => "Boolean value",
+    "date" => "Given date",
+    "tym" => "Given time",
+    "datetym" => "Date and time",
+    "ip" => "IP: Internet Protocol address",
+    "int" => "Integer value",
+    "float" => "Floating point/decimal value",
+    "password" => "Strong password",
+    "pattern" => "Regular expression/pattern",
+    "array" => "Array"
+  ];
 
   public function validate($val,array $options){
     if( \count($options) < 2 ){
