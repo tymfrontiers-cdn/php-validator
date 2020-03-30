@@ -16,25 +16,24 @@ class Validator{
   public $validate_type = [
     "name" => "Human name",
     "username" => "Unique ID or code",
-    "option" => "Set of options",
-    "email" => "Email address",
+    "option" => "Set of option(s)",
     "text" => "Plain text",
+    "ip" => "IP: Internet Protocol",
     "html" => "HTML text script",
     "markdown" => "Markdown script (Plain text)",
     "mixed" => "Mixed value",
     "script" => "Variable script",
-    "tel" => "Telephone number",
+    "pattern" => "Regular expression/pattern",
+    "email" => "Email address",
+    "tel" => "Phone number (including country code)",
     "url" => "URL/URI link",
+    "password" => "Strong password",
     "boolean" => "Boolean value",
     "date" => "Given date",
-    "tym" => "Given time",
-    "datetym" => "Date and time",
-    "ip" => "IP: Internet Protocol",
+    "time" => "Given time",
+    "datetime" => "Date and time",
     "int" => "Integer value",
-    "float" => "Floating point/decimal value",
-    "password" => "Strong password",
-    "pattern" => "Regular expression/pattern",
-    "array" => "Array"
+    "float" => "Floating point/decimal value"
   ];
 
   public function validate($val,array $options){
