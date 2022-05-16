@@ -156,7 +156,7 @@ class Validator{
   }
   public function text($text, array $opt=[]){
       $text = \trim($text);
-      $text = \filter_var($text, FILTER_SANITIZE_STRING);
+      $text = \filter_var($text, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $min = (int)$opt[2]; $max = (int)$opt[3];
       $errors='';
       if(!$text){
