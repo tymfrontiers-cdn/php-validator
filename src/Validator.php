@@ -13,6 +13,28 @@ class Validator{
   #     string line // where error ocured. e.g __LINE__
   #   ]
   # ]
+  public $validate_type = [
+    "name" => "Human name",
+    "username" => "Unique ID or code",
+    "option" => "Set of option(s)",
+    "text" => "Plain text",
+    "ip" => "IP: Internet Protocol",
+    "html" => "HTML text script",
+    "markdown" => "Markdown script (Plain text)",
+    "mixed" => "Mixed value",
+    "script" => "Variable script",
+    "pattern" => "Regular expression/pattern",
+    "email" => "Email address",
+    "tel" => "Phone number (including country code)",
+    "url" => "URL/URI link",
+    "password" => "Strong password",
+    "boolean" => "Boolean value",
+    "date" => "Given date",
+    "time" => "Given time",
+    "datetime" => "Date and time",
+    "int" => "Integer value",
+    "float" => "Floating point/decimal value"
+  ];
 
   public function validate($val,array $options){
     if( \count($options) < 2 ){
@@ -458,10 +480,12 @@ class Validator{
     return $return;
   }
   public function password($password, array $opt){
-    $regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,24}^";
-    $return = \preg_match_all($regex, $password) ? $password : false;
+    $regex = '/^.*(?=.{8,32})((?=.*[!@#$%^&*()\/\-_=+{}\]\[;:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/m';
+
+    \preg_match_all($regex, $password, $matches, PREG_SET_ORDER, 0);
+    $return = $matches ? $password : false;
     if( !$return ){
-      $this->errors['password'][] = [0,256,"[{$opt[0]}]: Password is too weak. Choose a stronger password of minimum character length:8, maximum character length: 24, it should contain at least one lower and upper case letter, a numeric and a special character such as $@$!%*?&",__FILE__,__LINE__];
+      $this->errors['password'][] = [0,256,"[{$opt[0]}]: Password is too weak. Choose a stronger password of minimum character length:8, maximum character length: 32, it should contain at least one lower and upper case letter, a numeric and a special character such as $@$!%*?&",__FILE__,__LINE__];
     }
     return $return;
   }
