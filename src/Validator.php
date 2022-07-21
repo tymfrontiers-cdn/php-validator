@@ -184,9 +184,9 @@ class Validator{
       if(!$text){
         $errors .= "[{$opt[0]}]: Invalid format for expected plain text.\r\n";
       } if( $min > 0 && \strlen($text) < $min ){
-        $errors .= "[{$opt[0]}]: Input text length is lower than expected minimum of {$min}.\r\n";
+        $errors .= "[{$opt[0]}]: Input text length is less than expected minimum of {$min}.\r\n";
       } if( $max > 0 && \strlen($text) > $max){
-        $errors .= "[{$opt[0]}]: Input text length is higher than expected maximum of {$max}.\r\n";
+        $errors .= "[{$opt[0]}]: Input text length is more than expected maximum of {$max}.\r\n";
       }
       if( !empty($errors) ){
         $this->errors['text'][] = [0,256,$errors,__FILE__,__LINE__];
@@ -202,9 +202,9 @@ class Validator{
       $errors .= "[{$opt[0]}]: Invalid HTML script.\r\n";
     }
     if( $min > 0 && \strlen($html) < $min ){
-      $errors .= "[{$opt[0]}]: Input HTML length is lower than expected minimum of {$min}.\r\n";
+      $errors .= "[{$opt[0]}]: Input HTML length is less than expected minimum of {$min}.\r\n";
     } if( $max > 0 && \strlen($html) > $max){
-      $errors .= "[{$opt[0]}]: Input HTML length is higher than expected maximum of {$max}.\r\n";
+      $errors .= "[{$opt[0]}]: Input HTML length is more than expected maximum of {$max}.\r\n";
     }
     if( !empty($errors) ){
       $this->errors['html'][] = [0,256,$errors,__FILE__,__LINE__];
@@ -219,9 +219,9 @@ class Validator{
     //   $errors .= "[{$opt[0]}]: Invalid HTML script.\r\n";
     // }
     if( $min > 0 && \strlen($script) < $min ){
-      $errors .= "[{$opt[0]}]: Input Script length is lower than expected minimum of {$min}.\r\n";
+      $errors .= "[{$opt[0]}]: Input Script length is less than expected minimum of {$min}.\r\n";
     } if( $max > 0 && \strlen($script) > $max){
-      $errors .= "[{$opt[0]}]: Input Script length is higher than expected maximum of {$max}.\r\n";
+      $errors .= "[{$opt[0]}]: Input Script length is more than expected maximum of {$max}.\r\n";
     }
     if( !empty($errors) ){
       $this->errors['markdown'][] = [0,256,$errors,__FILE__,__LINE__];
@@ -236,9 +236,9 @@ class Validator{
     //   $errors .= "[{$opt[0]}]: Invalid HTML script.\r\n";
     // }
     if( $min > 0 && \strlen($script) < $min ){
-      $errors .= "[{$opt[0]}]: Input Script length is lower than expected minimum of {$min}.\r\n";
+      $errors .= "[{$opt[0]}]: Input Script length is less than expected minimum of {$min}.\r\n";
     } if( $max > 0 && \strlen($script) > $max){
-      $errors .= "[{$opt[0]}]: Input Script length is higher than expected maximum of {$max}.\r\n";
+      $errors .= "[{$opt[0]}]: Input Script length is more than expected maximum of {$max}.\r\n";
     }
     if( !empty($errors) ){
       $this->errors['mixed'][] = [0,256,$errors,__FILE__,__LINE__];
@@ -250,9 +250,9 @@ class Validator{
     $min = (int)$opt[2]; $max = (int)$opt[3];
     $errors='';
     if( $min > 0 && \strlen($script) < $min ){
-      $errors .= "[{$opt[0]}]: Input script length is lower than expected minimum of {$min}.\r\n";
+      $errors .= "[{$opt[0]}]: Input script length is less than expected minimum of {$min}.\r\n";
     } if( $max > 0 && \strlen($script) > $max){
-      $errors .= "[{$opt[0]}]: Input script length is higher than expected maximum of {$max}.\r\n";
+      $errors .= "[{$opt[0]}]: Input script length is more than expected maximum of {$max}.\r\n";
     }
     if( !empty($errors) ){
       $this->errors['script'][] = [0,256,$errors,__FILE__,__LINE__];
@@ -404,8 +404,8 @@ class Validator{
       $max_tym = \strtotime($opt[3]);
       $ret_tym = \strtotime($return);
       // echo "min: ".$min_tym,'<br>',"ret: ".$ret_tym,'<br>';
-      if( $min_tym && $ret_tym < $min_tym  ){ $msg .= "[{$opt[0]}]: Given tym ({$return}) is earlier than expected ({$opt[2]})\r\n";  }
-      if($max_tym &&  $ret_tym > $max_tym ){ $msg .= "[{$opt[0]}]: Given tym ({$return}) is later than expected ({$opt[3]})\r\n";  }
+      if( $min_tym && $ret_tym < $min_tym  ){ $msg .= "[{$opt[0]}]: Given time ({$return}) is earlier than expected ({$opt[2]})\r\n";  }
+      if($max_tym &&  $ret_tym > $max_tym ){ $msg .= "[{$opt[0]}]: Given time ({$return}) is later than expected ({$opt[3]})\r\n";  }
       if(empty($msg)){
         return $return;
       }else{
