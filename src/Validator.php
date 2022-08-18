@@ -466,8 +466,8 @@ class Validator{
     return $return;
   }
   public function int($number, array $opt){
-    $number = \trim($number);
-    if( !$return = \filter_var($number, FILTER_VALIDATE_INT) ){
+    $return = \filter_var($number, FILTER_VALIDATE_INT);
+    if($return === false){
       $this->errors['int'][] = [0,256,"[{$opt[0]}]: Invalid numeric data given.",__FILE__,__LINE__];
     }
     return $return;
