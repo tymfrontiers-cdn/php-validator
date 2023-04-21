@@ -75,7 +75,7 @@ class Validator{
       return false;
     }
 
-    $val = \trim($val);
+    $val = !empty($val) ? \trim($val) : "";
     $match = \preg_match("/^[a-zA-Z'-]+$/", trim($val)) ? true : false;
     $restricted_names = [];
     $res_xtra = !empty($opt[2]) ? ( !\is_array($opt[2]) ? \explode(",",$opt[2]) : $opt[2] ) : null;
@@ -113,7 +113,7 @@ class Validator{
       return false;
     }
 
-    $val = \trim($val);
+    $val = !empty($val) ? \trim($val) : "";
     $regex = "/^[a-zA-Z0-9";
     if( !empty($opt[6]) && \is_array($opt[6]) ){
       foreach($opt[6] as $char){
@@ -160,7 +160,7 @@ class Validator{
     }
   }
   public function option($val,array $opt){
-    $val = \trim($val);
+    $val = !empty($val) ? \trim($val) : "";
     $array = \is_array($opt[2]) ? $opt[2] : \explode(',',$opt[2]);
     if(! \in_array($val,$array,true)){
       $this->errors['option'][] = [0,256,"[{$val}]: does not fall in accepted options such as ".\implode(", ",$array),__FILE__,__LINE__];
@@ -503,7 +503,7 @@ class Validator{
     return \count(\libxml_get_errors())==0;
   }
   public function pattern($val, array $opt){
-    $val = \trim($val);
+    $val = !empty($val) ? \trim($val) : "";
     #fieldname, #pattern
     if( \count($opt) < 3 ){
       $this->errors["pattern"][] = [3,256,"Invalid supplied options.",__FILE__,__LINE__];
