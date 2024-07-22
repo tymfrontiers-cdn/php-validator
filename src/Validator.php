@@ -281,7 +281,7 @@ class Validator{
     }
   }
   public function boolean($bool, array $opt){
-    return \filter_var($bool, FILTER_VALIDATE_BOOLEAN) ? (bool)$bool : false;
+    return \strlen($bool) == 0 ? (\is_bool($bool) ? $bool : "") : (\filter_var($bool, FILTER_VALIDATE_BOOLEAN) ? (bool)$bool : false);
   }
   public function date($date, array $opt){
     $return = false;
